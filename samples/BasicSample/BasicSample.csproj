@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <BlazorCacheBootResources>false</BlazorCacheBootResources>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,5 +14,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\ChartJS.Blazor\ChartJS.Blazor.csproj" />
   </ItemGroup>
-
 </Project>
