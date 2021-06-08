@@ -16,7 +16,7 @@ namespace BasicSample
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.Services.AddSingleton<ChartJSInterop>();
+            builder.Services.AddTransient<ChartJSInterop>();
 
             builder.RootComponents.Add<App>("#app");
 

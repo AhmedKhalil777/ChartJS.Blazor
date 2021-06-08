@@ -2,7 +2,7 @@
 {
     public class ChartScale
     {
-        public bool Stacked { get; set; }
+        public bool? Stacked { get; set; }
 
     }
 }

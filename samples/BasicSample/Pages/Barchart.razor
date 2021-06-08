@@ -32,6 +32,9 @@ else
             }
         </tbody>
     </table>
+    <button @onclick="ReloadBasicChart">Reload Basic Chart</button>
+
+    <BasicBarChart @ref="_chart"  Title="Hello Basic Chart" Data="@(new() { ["Hello"] = (double)new Random().Next(1,20) , ["dsff"] = (double)new Random().Next(1,20), ["sdf"] = (double)new Random().Next(1,20)})"></BasicBarChart>
     <ChartCanvas Configs="_config"></ChartCanvas>
 }
 
@@ -40,6 +43,12 @@ else
 
     private ChartConfig _config;
 
+    private BasicBarChart _chart;
+
+    private async Task ReloadBasicChart()
+    {
+        await _chart.InitChartAsync();
+    }
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");

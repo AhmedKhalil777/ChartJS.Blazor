@@ -9,7 +9,7 @@ namespace ChartJS.Blazor
         public List<string> BackgroundColor { get; set; }
 
         public List<string> BorderColor { get; set; } 
-        public double BorderWidth { get; set; } = 1;
+        public double? BorderWidth { get; set; } = 1;
 
         public bool? Fill { get; set; } 
         public bool? Stepped { get; set; } 

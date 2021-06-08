@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0312883F-82C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{1B318179-A9B1-4210-80CC-FC383B37392D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicSample", "..\samples\BasicSample\BasicSample.csproj", "{FC258CB1-19F5-430B-BCDE-0FE9F309208F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicSample", "..\samples\BasicSample\BasicSample.csproj", "{FC258CB1-19F5-430B-BCDE-0FE9F309208F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

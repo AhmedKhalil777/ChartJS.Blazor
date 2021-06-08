@@ -1,11 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace ChartJS.Blazor
 {
     public static class ChartJSColors
     {
+        public static List<string> GetAllColors()
+        {
+            return new() { Pink, Orange, Bulbous, Turqouise, Aqua, Violet, Grey };
+        }
+
+        public static IEnumerable<string> GetRandomEnumerable(int count = 3,[Range(0,1)] float? transparency = null )
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return $"rgba({new Random().Next(0,255)}, {new Random().Next(0, 255)} , {new Random().Next(0, 255)},{transparency?? 1})";
+            }
+        }
+
+
+        public static IEnumerable<string> GetEnumerableOfSame(int count =3,string color = Aqua)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return color;
+            }
+        }
         public const string Pink = "rgb(255, 99, 132)";
         public const string Orange = "rgb(255, 159, 64)";
         public const string Bulbous = "rgb(255, 205, 86)";
@@ -22,7 +44,14 @@ namespace ChartJS.Blazor
             public const string Aqua = "rgba(54, 162, 235, 0.2)";
             public const string Violet = "rgba(153, 102, 255, 0.2)";
             public const string Grey = "rgba(201, 203, 207, 0.2)";
+
+            public static List<string> GetAllColors()
+            {
+                return new() { Pink, Orange, Bulbous, Turqouise, Aqua, Violet, Grey };
+            }
         }
+
+
 
         public static class Transparent40
         {
@@ -33,6 +62,10 @@ namespace ChartJS.Blazor
             public const string Aqua = "rgba(54, 162, 235, 0.4)";
             public const string Violet = "rgba(153, 102, 255, 0.4)";
             public const string Grey = "rgba(201, 203, 207, 0.4)";
+            public static List<string> GetAllColors()
+            {
+                return new() { Pink, Orange, Bulbous, Turqouise, Aqua, Violet, Grey };
+            }
         }
 
         public static class Transparent60
@@ -44,6 +77,10 @@ namespace ChartJS.Blazor
             public const string Aqua = "rgba(54, 162, 235, 0.6)";
             public const string Violet = "rgba(153, 102, 255, 0.6)";
             public const string Grey = "rgba(201, 203, 207, 0.6)";
+            public static List<string> GetAllColors()
+            {
+                return new() { Pink, Orange, Bulbous, Turqouise, Aqua, Violet, Grey };
+            }
         }
 
         public static IEnumerable<string> Randomize20(int count)

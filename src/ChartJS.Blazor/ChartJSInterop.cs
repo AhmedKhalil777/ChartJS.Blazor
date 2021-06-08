@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ChartJS.Blazor
@@ -13,20 +15,30 @@ namespace ChartJS.Blazor
 
     public class ChartJSInterop : IAsyncDisposable
     {
-        private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
-        public ChartJSInterop(IJSRuntime jsRuntime)
+        private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
+        private readonly ILogger<ChartJSInterop> _logger;
+
+        public ChartJSInterop(IJSRuntime jsRuntime, ILogger<ChartJSInterop> Logger)
         {
             _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/ChartJS.Blazor/chartJSBlazor.js").AsTask());
+               "import", "./_content/BlazorChartJs/chartJSBlazor.js").AsTask());
+            _logger = Logger;
         }
 
-        public async ValueTask CreateChart(string id, ChartConfig configs)
+        public async ValueTask<bool> CreateChart(string id, ChartConfig configs)
         {
             var module = await _moduleTask.Value;
-            await module.InvokeVoidAsync("createChart", id, configs);
+            var res = await module.InvokeAsync<bool>("createChart", id, configs);
+            return res;
         }
 
+
+        public async ValueTask DestroyChart(string id)
+        {
+            var module = await _moduleTask.Value;
+            await module.InvokeVoidAsync("destroyChart",id);
+        }
         public async ValueTask DisposeAsync()
         {
             if (_moduleTask.IsValueCreated)
